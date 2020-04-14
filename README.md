@@ -1,4 +1,13 @@
 # Bookli
+Grupo 8
+
+-Bruschini María Sol
+
+
+
+
+
+
 
 Aplicación utilizada en la cursada 2020 de Ingenieria de Software. UTN-FRLP
 
