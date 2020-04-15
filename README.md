@@ -3,9 +3,9 @@
 Aplicación utilizada en la cursada 2020 de Ingenieria de Software. UTN-FRLP
 
 #GRUPO NUMERO 1
- BASALO,ANTONELLA 
-todas putas
-
+ BASALO,ANTONELLA
+ DALZOBO, MARÍA LAURA
+ DI SANTO, LOURDES ROCIO
 ## Dependencias
 
  - node > v10
