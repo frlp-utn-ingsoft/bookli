@@ -2,7 +2,10 @@
 Grupo 8
 
 -Bruschini María Sol
+
 -Vergara Natalia
+
+-Orrino Ariel
 
 
 
