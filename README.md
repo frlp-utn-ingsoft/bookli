@@ -5,11 +5,9 @@ Grupo 8
 
 -Vergara Natalia
 
--Orrino Ariel
-
 -Nahuel Mulato
 
-
+-Orrino Ariel
 
 
 
