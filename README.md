@@ -6,6 +6,7 @@ Aplicación utilizada en la cursada 2020 de Ingenieria de Software. UTN-FRLP
  BASALO,ANTONELLA
  DALZOBO, MARÍA LAURA
  DI SANTO, LOURDES ROCIO
+ LYDE, ERIKA YAMILA
 ## Dependencias
 
  - node > v10
