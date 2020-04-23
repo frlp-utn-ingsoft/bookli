@@ -57,6 +57,10 @@ const Book = db.define(
         cover: {
             type: Sequelize.STRING,
         },
+        country: {
+            type: Sequelize.STRING,
+            allowNull: false,
+        },
         status: {
             type: Sequelize.ENUM,
             allowNull: false,
