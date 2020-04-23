@@ -81,7 +81,12 @@ function startDevServer() {
 async function start() {
     await fixture.initBooks();
     await compileTemplates();
-    startDevServer();
+
+    if (process.arv && !process.arv.includes('build')) {
+        startDevServer();
+    }
 }
 
-start();
+if (require.main === module) {
+    start();
+}

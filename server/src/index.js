@@ -14,8 +14,6 @@ const models = require('./models/index.js');
 const bookRouter = require('./routes/book.js');
 const viewRouter = require('./routes/view.js');
 
-const fixture = require('../../scripts/fixture.js');
-
 const client = path.resolve(__dirname, '..', '..', 'client');
 
 const inTest = process.env.NODE_ENV === 'test';
@@ -67,11 +65,7 @@ async function startServer(port=process.env.PORT) {
 }
 
 if (require.main === module) {
-    if (process.env.NODE_ENV === 'production') {
-        fixture.initBooks().then(() => startServer());
-    } else {
-        startServer();
-    }
+    startServer();
 }
 
 module.exports = startServer;
