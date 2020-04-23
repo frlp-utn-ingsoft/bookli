@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "dev": "node ./scripts/init.js",
-        "start": "node ./server/src/index.js",
+        "start": "cross-env NODE_ENV=production node ./scripts/init.js && node ./server/src/index.js",
         "test": "cross-env NODE_ENV=test jest",
         "test:e2e": "cross-env NODE_ENV=test nightwatch test/e2e"
     },
