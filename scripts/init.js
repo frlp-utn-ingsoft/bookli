@@ -81,10 +81,7 @@ function startDevServer() {
 async function start() {
     await fixture.initBooks();
     await compileTemplates();
-
-    if (process.env.NODE_ENV !== 'production') {
-        startDevServer();
-    }
+    startDevServer();
 }
 
 start();
