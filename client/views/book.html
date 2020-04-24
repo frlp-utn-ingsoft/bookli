@@ -22,7 +22,7 @@
                 <span class="highlight">{{ book.country }}</span>.
             </p>
             <p>
-                Es un libro perteneciente a los géneros
+                Es un libro perteneciente a los géneros : {{ book.genres }}
                 <span class="highlight"></span>.
             </p>
         </div>
@@ -49,4 +49,13 @@
         {% endif %}
     </div>
     {% endif %}
+
 </div>
+
+
+{% if detail %} 
+
+<button style="margin-top:10px" class="btn btn-primary" onclick="history.back()" padding-Top= > Atras </button> 
+
+{% endif %}
+
