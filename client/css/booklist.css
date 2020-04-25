@@ -3,6 +3,10 @@
     grid-gap: var(--space-3);
 }
 
+.book-link:hover{
+	opacity: 0.4;
+}
+
 .booklist--empty {
     display: flex;
     flex-direction: column;
