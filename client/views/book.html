@@ -22,8 +22,8 @@
                 <span class="highlight">{{ book.country }}</span>.
             </p>
             <p>
-                Es un libro perteneciente a los géneros : {{ book.genres }}
-                <span class="highlight"></span>.
+		Es un libro perteneciente a los géneros:
+                <span class="highlight">{{ book.genres | join(', ') }}</span>.
             </p>
         </div>
         {% endif %}
@@ -55,7 +55,7 @@
 
 {% if detail %} 
 
-<button style="margin-top:10px" class="btn btn-primary" onclick="history.back()" padding-Top= > Atras </button> 
+<button style="margin-top:10px" class="btn btn-primary" onclick="history.back()"> Atras </button> 
 
 {% endif %}
 
