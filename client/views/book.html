@@ -29,6 +29,8 @@
         {% endif %}
     </div>
 
+
+    
     {% if detail %}
     <div class="book__actions">
         {% if book.status == 'AVAILABLE' %}
@@ -46,9 +48,21 @@
         <button class="btn btn-danger" data-ref="removeFromFinish">
             Volver a leer
         </button>
+
+        <label for="Calificacion">Calificacion</label>
+        <select class="btn btn-primary" >
+            <option data-ref="setRating()">Muy bueno</option>
+            <option data-ref="removeFromFinish">Bueno</option>
+            <option data-ref="removeFromFinish">Regular</option>
+            <option data-ref="removeFromFinish">Malo</option>
+            <option data-ref="removeFromFinish">Muy Malo</option>
+        </select>
+
         {% endif %}
     </div>
     {% endif %}
+
+
 
 </div>
 
