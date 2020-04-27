@@ -51,6 +51,15 @@ async function addToFinishList() {
 
 
 /**
+ * Califica el libro
+ **/
+
+ async function setRating() {
+    await bookService.RatingBook(state.book.id,rating);
+
+}
+
+/**
  * Actualiza la UI
  **/
 function renderBook(book) {
