@@ -195,6 +195,9 @@ const ratingBook = (id, newRating) => {
             if (book.status !== FINISHED) {
                 return book;
             }
+            if (newRating == null) {
+                return book;
+            }
             newRating = parseInt(newRating);
             const quantityVotes = book.quantity_votes + 1;
             const dividendo = quantityVotes < 2 ? 1 : 2;
