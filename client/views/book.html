@@ -30,7 +30,7 @@
     </div>
 
 
-    
+
     {% if detail %}
     <div class="book__actions">
         {% if book.status == 'AVAILABLE' %}
@@ -49,27 +49,25 @@
             Volver a leer
         </button>
 
-        <label for="Calificacion">Calificacion</label>
-        <select class="btn btn-primary" >
-            <option data-ref="setRating()">Muy bueno</option>
-            <option data-ref="removeFromFinish">Bueno</option>
-            <option data-ref="removeFromFinish">Regular</option>
-            <option data-ref="removeFromFinish">Malo</option>
-            <option data-ref="removeFromFinish">Muy Malo</option>
+        <label for="Calificacion: ">Calificacion</label>
+        <select class="btn btn-primary" id="rating">
+            <option value =5>Muy bueno</option>
+            <option value =4>Bueno</option>
+            <option value =3>Regular</option>
+            <option value =2>Malo</option>
+            <option value =1>Muy Malo</option>
+            <option selected></option>
         </select>
 
         {% endif %}
     </div>
     {% endif %}
-
-
-
 </div>
 
 
-{% if detail %} 
+{% if detail %}
 
-<button style="margin-top:10px" class="btn btn-primary" onclick="history.back()"> Atras </button> 
+<button style="margin-top:10px" class="btn btn-primary" onclick="history.back()"> Atras </button>
 
 {% endif %}
 
