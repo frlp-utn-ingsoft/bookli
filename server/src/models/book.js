@@ -62,7 +62,7 @@ const Book = db.define(
             allowNull: false,
         },
         rating: {
-            type: Sequelize.NUMBER,
+            type: Sequelize.DECIMAL(3,2),
         },
         quantity_votes: {
             type: Sequelize.INTEGER,
@@ -195,8 +195,10 @@ const ratingBook = (id, newRating) => {
             if (book.status !== FINISHED) {
                 return book;
             }
-        const quantityVotes = book.quantity_votes + 1;
-        const rating = (book.rating + newRating) / quantityVotes;
+            newRating = parseInt(newRating);
+            const quantityVotes = book.quantity_votes + 1;
+            const dividendo = quantityVotes < 2 ? 1 : 2;
+            const rating = (book.rating + newRating) / dividendo;
             return book.update({ rating: rating, quantity_votes: quantityVotes });
         }
         return null;
