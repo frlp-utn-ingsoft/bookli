@@ -88,8 +88,11 @@ async function start() {
 
     await compileTemplates();
 
-    if (!isBuild && !isProduction) {
+    if (!isBuild) {
         await fixture.initBooks();
+    }
+
+    if (!isBuild && !isProduction) {
         startDevServer();
     }
 }
