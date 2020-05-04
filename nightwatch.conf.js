@@ -9,6 +9,10 @@ module.exports = {
 
     test_settings: {
         default: {
+            globals: {
+                waitForConditionTimeout: 10000,
+                retryAssertionTimeout: 2000,
+            },
             webdriver: {
                 end_session_on_fail: false,
                 server_path: require('chromedriver').path,
@@ -22,7 +26,7 @@ module.exports = {
                         '--incognito',
                         '--no-sandbox',
                         '--headless',
-                        '--disable-dev-shm-usage'
+                        '--disable-dev-shm-usage',
                     ],
                 },
             },
