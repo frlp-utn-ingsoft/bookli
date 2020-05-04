@@ -27,5 +27,5 @@ jobs:
     - run: npm run build --if-present
     - run: npm run lint
     - run: npm test
-    - run: npm lighthouse
     - run: npm run test:e2e
+    - run: npm run lighthouse
