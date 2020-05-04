@@ -106,3 +106,4 @@ dist
 server/database.sqlite
 tests_output
 client/js/partials/
+.lighthouseci
