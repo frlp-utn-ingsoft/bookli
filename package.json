@@ -7,7 +7,7 @@
         "dev": "node ./scripts/init.js",
         "start": "node ./server/src/index.js",
         "test": "cross-env NODE_ENV=test jest",
-        "test:e2e": "cross-env NODE_ENV=test nightwatch test/e2e",
+        "test:e2e": "nightwatch test/e2e",
         "lint": "eslint .",
         "prettier": "prettier --write ."
     },
