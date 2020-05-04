@@ -83,11 +83,12 @@ function startDevServer() {
 }
 
 async function start() {
-    const isBuild = process.argv.includes('--build');
+    const isBuild = process.argv.includes('build');
+    const isProduction = process.env.NODE_ENV === 'production';
 
     await compileTemplates();
 
-    if (!isBuild) {
+    if (!isBuild && !isProduction) {
         await fixture.initBooks();
         startDevServer();
     }
