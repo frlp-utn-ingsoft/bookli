@@ -18,7 +18,12 @@ module.exports = {
             desiredCapabilities: {
                 browserName: 'chrome',
                 chromeOptions: {
-                    args: ['--incognito'],
+                    args: [
+                        '--incognito',
+                        '--no-sandbox',
+                        '--headless',
+                        '--disable-dev-shm-usage'
+                    ],
                 },
             },
         },
