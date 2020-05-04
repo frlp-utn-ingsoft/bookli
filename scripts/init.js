@@ -83,9 +83,17 @@ function startDevServer() {
 }
 
 async function start() {
-    await fixture.initBooks();
+    const isBuild = process.argv.includes('--build');
+
+    if (!isBuild) {
+        await fixture.initBooks();
+    }
+
     await compileTemplates();
-    startDevServer();
+
+    if (!isBuild) {
+        startDevServer();
+    }
 }
 
 start();

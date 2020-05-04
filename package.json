@@ -6,6 +6,7 @@
     "scripts": {
         "dev": "node ./scripts/init.js",
         "start": "node ./server/src/index.js",
+        "build": "node ./scripts/init.js --build",
         "test": "cross-env NODE_ENV=test jest",
         "test:e2e": "cross-env NODE_ENV=test nightwatch test/e2e",
         "lint": "eslint .",
