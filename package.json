@@ -9,6 +9,7 @@
         "start": "cross-env NODE_ENV=production node ./server/src/index.js",
         "test": "cross-env NODE_ENV=test jest",
         "test:e2e": "cross-env NODE_ENV=test nightwatch test/e2e",
+        "lighthouse": "lhci autorun",
         "lint": "eslint .",
         "prettier": "prettier --write ."
     },
@@ -26,6 +27,7 @@
         "cross-env": "^7.0.2"
     },
     "devDependencies": {
+        "@lhci/cli": "^0.3.14",
         "babel-jest": "^25.2.6",
         "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
         "chromedriver": "^80.0.2",
