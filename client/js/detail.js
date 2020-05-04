@@ -4,7 +4,7 @@ import bookService from './book-service.js';
 const refs = getRefs();
 
 const state = {
-    book: null
+    book: null,
 };
 
 /**
@@ -14,7 +14,7 @@ function getBookId(str) {
     const result = /detail\/(\d+)/.exec(str);
 
     if (result) {
-        return result[1]
+        return result[1];
     }
 }
 
@@ -50,32 +50,27 @@ async function addToFinishList() {
 }
 
 /**
- * Quita un libro de la lista de lectura
- *
- * Actualiza el libro y la UI
- **/
-async function removeFromFinishList() {
-    await bookService.makeBookAvailable(state.book.id);
-    state.book = await bookService.get(state.book.id);
-
-    renderBook(state.book);
-}
-
-/**
  * Actualiza la UI
  **/
 function renderBook(book) {
-    const bookRefs = render('book.html', {
-        book: book,
-        detail: true
-    }, refs.main);
+    const bookRefs = render(
+        'book.html',
+        {
+            book: book,
+            detail: true,
+        },
+        refs.main
+    );
 
     if (book.status === 'AVAILABLE') {
         bookRefs.addToList.addEventListener('click', addToReadingList);
     }
 
     if (book.status === 'READING') {
-        bookRefs.removeFromList.addEventListener('click', removeFromReadingList);
+        bookRefs.removeFromList.addEventListener(
+            'click',
+            removeFromReadingList
+        );
         bookRefs.addToFinish.addEventListener('click', addToFinishList);
     }
 

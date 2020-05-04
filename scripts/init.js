@@ -17,12 +17,14 @@ function compileTemplate(name, template, dest) {
     return fs.writeFile(dest, tmpl);
 }
 
-var deleteFolderRecursive = function(path) {
-    fsSync.readdirSync(path).forEach(function(file,index){
-        var curPath = path + "/" + file;
-        if (fsSync.lstatSync(curPath).isDirectory()) { // recurse
+const deleteFolderRecursive = function (path) {
+    fsSync.readdirSync(path).forEach(function (file) {
+        const curPath = path + '/' + file;
+        if (fsSync.lstatSync(curPath).isDirectory()) {
+            // recurse
             deleteFolderRecursive(curPath);
-        } else { // delete file
+        } else {
+            // delete file
             fsSync.unlinkSync(curPath);
         }
     });
@@ -35,7 +37,6 @@ async function compileTemplates() {
         if (exist) {
             deleteFolderRecursive(tmplsPath);
         }
-
     } catch (e) {
         if (e.code !== 'ENOENT') {
             throw e;
@@ -44,17 +45,19 @@ async function compileTemplates() {
         fsSync.mkdirSync(tmplsPath);
     }
 
-    const files = fsSync.readdirSync(viewsPath)
+    const files = fsSync.readdirSync(viewsPath);
 
     const promises = files
-        .filter((fileName) => !fileName.startsWith('_'))
+        .filter(fileName => !fileName.startsWith('_'))
         .map(function (fileName) {
             const filePath = path.resolve(viewsPath, fileName);
-            const tmplPath = path.resolve(tmplsPath, fileName.replace('html', 'js'));
-            return fs.readFile(filePath, 'utf8')
-                .then(function (tmplContent) {
-                    return compileTemplate(fileName, tmplContent, tmplPath);
-                });
+            const tmplPath = path.resolve(
+                tmplsPath,
+                fileName.replace('html', 'js')
+            );
+            return fs.readFile(filePath, 'utf8').then(function (tmplContent) {
+                return compileTemplate(fileName, tmplContent, tmplPath);
+            });
         });
 
     return Promise.all(promises);
@@ -63,26 +66,29 @@ async function compileTemplates() {
 function startDevServer() {
     nodemon({
         script: path.resolve(serverPath, 'index.js'),
-        ext: 'js html css'
-    }).on('log', ({ colour }) => {
-        console.log(colour);
-    }).on('restart', (changedFiles) => {
-        const isTemplate = changedFiles.some(fileName => {
-            return fileName.includes('views')
-                && fileName.includes('.html');
+        ext: 'js html css',
+    })
+        .on('log', ({ colour }) => {
+            console.log(colour);
         })
+        .on('restart', changedFiles => {
+            const isTemplate = changedFiles.some(fileName => {
+                return fileName.includes('views') && fileName.includes('.html');
+            });
 
-        if (isTemplate) {
-            compileTemplates();
-        }
-    });
+            if (isTemplate) {
+                compileTemplates();
+            }
+        });
 }
 
 async function start() {
-    await fixture.initBooks();
+    const isBuild = process.argv.includes('--build');
+
     await compileTemplates();
 
-    if (process.arv && !process.arv.includes('build')) {
+    if (!isBuild) {
+        await fixture.initBooks();
         startDevServer();
     }
 }

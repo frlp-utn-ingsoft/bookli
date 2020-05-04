@@ -15,22 +15,28 @@ async function search(query, status) {
 }
 
 async function get(id) {
-    const resp = await fetch(`${BASE_URL}/books/${id}`)
+    const resp = await fetch(`${BASE_URL}/books/${id}`);
     return await resp.json();
 }
 
 async function startBook(id) {
-    const resp = await fetch(`${BASE_URL}/books/${id}/start`, { method: 'PUT' });
+    const resp = await fetch(`${BASE_URL}/books/${id}/start`, {
+        method: 'PUT',
+    });
     return resp;
 }
 
 async function makeBookAvailable(id) {
-    const resp = await fetch(`${BASE_URL}/books/${id}/available`, { method: 'PUT' });
+    const resp = await fetch(`${BASE_URL}/books/${id}/available`, {
+        method: 'PUT',
+    });
     return resp;
 }
 
 async function finishBook(id) {
-    const resp = await fetch(`${BASE_URL}/books/${id}/finish`, { method: 'PUT' });
+    const resp = await fetch(`${BASE_URL}/books/${id}/finish`, {
+        method: 'PUT',
+    });
     return resp;
 }
 
@@ -40,5 +46,5 @@ export default {
     search,
     startBook,
     finishBook,
-    makeBookAvailable
-}
+    makeBookAvailable,
+};

@@ -1,6 +1,6 @@
 :root {
-    --text-xs: .64rem;
-    --text-s: .8rem;
+    --text-xs: 0.64rem;
+    --text-s: 0.8rem;
     --text: 1rem;
     --text-l: 1.25rem;
     --text-xl: 1.563rem;
@@ -32,7 +32,8 @@
 
     --radius: 0.5rem;
 
-    --shadow:  0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 2px 4px -1px rgba(0, 0, 0, 0.06);
 
     --sm: 640px;
 }
@@ -41,7 +42,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap');
 
 /* reset */
-*, *:before, *:after {
+*,
+*:before,
+*:after {
     box-sizing: border-box;
 }
 
@@ -59,7 +62,9 @@ body {
     background: var(--bg);
 }
 
-p { margin: 0; }
+p {
+    margin: 0;
+}
 
 .btn {
     all: unset;
@@ -70,7 +75,7 @@ p { margin: 0; }
     padding: var(--space-1);
     box-shadow: var(--shadow);
     cursor: pointer;
-    transition: background-color .2s;
+    transition: background-color 0.2s;
 }
 
 .btn:hover {
@@ -168,7 +173,7 @@ p { margin: 0; }
 
 .brand {
     display: inline-flex;
-    align-items: baseline
+    align-items: baseline;
 }
 
 .brand__logo {
@@ -221,7 +226,7 @@ p { margin: 0; }
 
 /* Filters */
 .filters {
-    overflow: hidden;       /* hace que el borde del hover sea redondo en los filtros */
+    overflow: hidden; /* hace que el borde del hover sea redondo en los filtros */
     font-size: var(--text-xl);
 }
 
@@ -252,10 +257,9 @@ p { margin: 0; }
     height: var(--text-xxl);
     top: 50%;
     transform: translateY(-50%);
-    border: 2px solid var( --primary);
-    left: calc(var( --space-5) - 10px);
+    border: 2px solid var(--primary);
+    left: calc(var(--space-5) - 10px);
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
 }
 /* End Filters */
-

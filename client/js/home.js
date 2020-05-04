@@ -1,4 +1,4 @@
-import { getRefs, debounce, render, assign } from './utils.js';
+import { getRefs, debounce, render } from './utils.js';
 import bookService from './book-service.js';
 
 const INPUT_DELAY = 400;
@@ -7,7 +7,7 @@ const refs = getRefs();
 let state = {
     searchTerm: '',
     status: '',
-    books: []
+    books: [],
 };
 
 /**
@@ -37,7 +37,7 @@ async function changeFilter(status) {
  * actualiza la lista de libros
  **/
 async function getAllBooks() {
-    const books = await bookService.getAll()
+    const books = await bookService.getAll();
 
     state.books = books;
     renderBooks(state);
@@ -54,13 +54,14 @@ function renderBooks(state) {
  *
  **/
 function setUpListeners() {
-    refs.search.addEventListener('input',
+    refs.search.addEventListener(
+        'input',
         debounce((e) => searchBooks(e.target.value), INPUT_DELAY)
     );
 
-    refs.filter.addEventListener('change',
-        (e) => { changeFilter(e.target.value) }
-    );
+    refs.filter.addEventListener('change', (e) => {
+        changeFilter(e.target.value);
+    });
 }
 
 /**
