@@ -17,7 +17,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Build and Test
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
@@ -28,3 +28,20 @@ jobs:
     - run: npm run lint
     - run: npm test
     - run: npm run test:e2e
+
+  perf:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Metrics
+      uses: actions/setup-node@v1
+
+    - run: npm ci
+    - run: npm run build --if-present
+    - run: npm run start &
+    - run: npm run lighthouse
