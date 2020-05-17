@@ -42,6 +42,18 @@ describe('Home Test', () => {
             );
     });
 
+        test('Deberia chequear que el link de redireccion del icono de la aplicacion sea el del home', browser => {
+        browser
+            .url(BASE_URL)
+            .waitForElementVisible('body')
+            .waitForElementVisible('.brand__logo')
+            .assert.attributeContains(
+                'body > header > div.brand > a:nth-child(1)',
+                'href',
+                'http://localhost:3000'
+            );
+    });
+
     test('Deberia mostrar la lista de libros', browser => {
         browser
             .url(BASE_URL)
