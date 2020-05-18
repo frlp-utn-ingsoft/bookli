@@ -22,8 +22,8 @@
                 <span class="highlight">{{ book.country }}</span>.
             </p>
             <p>
-                Es un libro perteneciente a los géneros
-                <span class="highlight"></span>.
+                Es un libro perteneciente a los géneros 
+                <span class="highlight">{{ book.genres }}</span>.
             </p>
         </div>
         {% endif %}
@@ -47,6 +47,8 @@
             Volver a leer
         </button>
         {% endif %}
+        <a href="/" class="btn btn-success">Volver a la página principal</a>
+        
     </div>
     {% endif %}
 </div>
