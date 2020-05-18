@@ -78,6 +78,19 @@ describe('Home Test', () => {
                 'Hmmm... Parece que no tenemos el libro que buscas.\nProba con otra busqueda.'
             );
     });
+    
+    test('Deberia mostrar el placeholder del search', browser => {
+        browser
+            .url(BASE_URL)
+            .waitForElementVisible('body')
+            .waitForElementVisible('body > header > div.search')
+            .assert.attributeContains(
+                'body > header > div.search > input',
+                'placeholder',
+                'Buscar libro'
+            );
+    });
+
 });
 
 describe('Detail view', () => {
