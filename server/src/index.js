@@ -18,7 +18,7 @@ const client = path.resolve(__dirname, '..', '..', 'client');
 const inTest = process.env.NODE_ENV === 'test';
 const views = path.resolve(client, 'views');
 
-async function startServer(port = process.env.SERVER_PORT) {
+async function startServer(port=process.env.PORT) {
     port = port || (await detectPort(3000));
     await models.createTables();
 

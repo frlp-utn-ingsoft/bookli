@@ -83,9 +83,21 @@ function startDevServer() {
 }
 
 async function start() {
-    await fixture.initBooks();
+    const isBuild = process.argv.includes('build');
+    const isProduction = process.env.NODE_ENV === 'production';
+    const isTest = process.env.NODE_ENV === 'test';
+
     await compileTemplates();
-    startDevServer();
+
+    if (!isTest) {
+        await fixture.initBooks();
+    }
+
+    if (!isBuild && !isProduction) {
+        startDevServer();
+    }
 }
 
-start();
+if (require.main === module) {
+    start();
+}
