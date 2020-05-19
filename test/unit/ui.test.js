@@ -4,6 +4,12 @@
 
 import bookServices from '../../client/js/book-service.js';
 import * as utils from '../../client/js/utils.js';
+var nunjucks = require('nunjucks');
+nunjucks.configure('client/views');
+
+beforeEach(() => {
+    document.documentElement.innerHTML = '';
+});
 
 function makeFakeJSONFetch({ success, result }) {
     return function () {
@@ -106,5 +112,24 @@ describe('Utils', () => {
         const div = document.body.firstElementChild;
 
         expect(refs).toStrictEqual({ myDiv: div });
+    });
+
+    test('LogoLink', () => {
+        document.documentElement.innerHTML = nunjucks.render('../../client/views/_base.html');
+        var brandDiv = document.getElementsByClassName("brand")[0];
+
+        expect(brandDiv.children.length).toEqual(2);
+        
+        var aElement = brandDiv.children[0];
+        
+        expect(aElement.getAttribute("title")).toEqual("Bookli");
+        expect(aElement.getAttribute("href")).toEqual("/");
+        expect(aElement.children.length).toEqual(1);
+        
+        var imgElement = aElement.children[0];
+        
+        expect(imgElement.getAttribute("class")).toEqual("brand__logo");
+        expect(imgElement.getAttribute("src")).toEqual("/assets/logo.svg");
+        expect(imgElement.getAttribute("alt")).toEqual("bookli logo");
     });
 });
