@@ -51,6 +51,15 @@ async function addToFinishList() {
 
 
 /**
+ * Califica el libro
+ **/
+
+async function setRating() {
+    const rating = document.getElementById("rating");
+    await bookService.ratingBook(state.book.id, rating.value);
+}
+
+/**
  * Actualiza la UI
  **/
 function renderBook(book) {
@@ -77,6 +86,8 @@ function renderBook(book) {
 
     if (book.status === 'FINISHED') {
         bookRefs.removeFromFinish.addEventListener('click', addToReadingList);
+        const rating = document.getElementById("rating");
+        rating.addEventListener("change", setRating);
     }
 
 }
