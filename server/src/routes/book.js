@@ -105,4 +105,26 @@ router.put('/:id/finish', function (req, res) {
         .catch(() => res.status(500).send('Error al obtener libro'));
 });
 
+router.put('/:id/rating/:rating', function (req, res) {
+    BookModel.rating(req.params.id, req.params.rating)
+        .then((book) => {
+            if (book == null) {
+                res.status(404).send(
+                    'El libro ' + req.params.id + ' no fue encontrado'
+                );
+            } else {
+                if (book.status !== BookModel.status.FINISHED) {
+                    res.status(400).send(
+                        'El libro ' +
+                            req.params.id +
+                            ' aun no está terminado'
+                    );
+                } else {
+                    res.status(200).send(book);
+                }
+            }
+        })
+        .catch(() => res.status(500).send('Error al obtener libro'));
+});
+
 module.exports = router;

@@ -13,6 +13,9 @@ const initBooks = () => {
                 genres: ['Cuentos', 'Fantástico'],
                 authors: ['Jorge Luis Borges'],
                 cover: '/assets/covers/el-aleph.jpg',
+                country: 'Argentina',
+                rating: 0,
+                quantity_votes: 0,
                 status: BookModel.status.AVAILABLE,
             })
         )
@@ -27,6 +30,9 @@ const initBooks = () => {
                 genres: ['No ficción'],
                 authors: ['Rodolfo Walsh'],
                 cover: '/assets/covers/operacion-masacre.jpg',
+                country: 'Argentina',
+                rating: 0,
+                quantity_votes: 0,
                 status: BookModel.status.AVAILABLE,
             })
         )
@@ -41,6 +47,9 @@ const initBooks = () => {
                 genres: ['Educación', 'Tecnología', 'Programación'],
                 authors: ['David Thomas', 'Andrew Hunt'],
                 cover: '/assets/covers/pragmatic-programmer.jpg',
+                country: 'Estados Unidos',
+                rating: 0,
+                quantity_votes: 0,
                 status: BookModel.status.AVAILABLE,
             })
         )
@@ -56,6 +65,9 @@ const initBooks = () => {
                 genres: ['Educación', 'Tecnología', 'Programación'],
                 authors: ['Steve McConnell'],
                 cover: '/assets/covers/code-complete.jpg',
+                country: 'Estados Unidos',
+                rating: 0,
+                quantity_votes: 0,
                 status: BookModel.status.AVAILABLE,
             })
         )
@@ -70,6 +82,9 @@ const initBooks = () => {
                 genres: ['Policial', 'Cuentos'],
                 authors: ['Sir Arthur Conan Doyle'],
                 cover: '/assets/covers/sherlock.jpg',
+                country: 'Reino Unido',
+                rating: 0,
+                quantity_votes: 0,
                 status: BookModel.status.AVAILABLE,
             })
         )
@@ -84,6 +99,9 @@ const initBooks = () => {
                 genres: ['Ciencia ficción', 'Novela'],
                 authors: ['George Orwell'],
                 cover: '/assets/covers/1984.jpg',
+                country: 'Reino Unido',
+                rating: 0,
+                quantity_votes: 0,
                 status: BookModel.status.AVAILABLE,
             })
         )
@@ -98,6 +116,9 @@ const initBooks = () => {
                 genres: ['Ficción distópica', 'Novela'],
                 authors: ['Franz Kafka'],
                 cover: '/assets/covers/trial.jpg',
+                country: 'Alemania',
+                rating: 0,
+                quantity_votes: 0,
                 status: BookModel.status.AVAILABLE,
             })
         )
@@ -112,6 +133,9 @@ const initBooks = () => {
                 genres: ['Ciencia ficción', 'Novela'],
                 authors: ['Ray Bradbury'],
                 cover: '/assets/covers/fahrenheit.jpg',
+                country: 'Estados Unidos',
+                rating: 0,
+                quantity_votes: 0,
                 status: BookModel.status.AVAILABLE,
             })
         )
@@ -126,6 +150,9 @@ const initBooks = () => {
                 genres: ['Comedia', 'Teatro'],
                 authors: ['Oscar Wilde'],
                 cover: '/assets/covers/earnest.jpg',
+                country: 'Inglaterra',
+                rating: 0,
+                quantity_votes: 0,
                 status: BookModel.status.AVAILABLE,
             })
         )
@@ -139,6 +166,9 @@ const initBooks = () => {
                 isbn: '9780451526342',
                 genres: ['Sátira', 'Novela'],
                 authors: ['George Orwell'],
+                country: 'Reino Unido',
+                rating: 0,
+                quantity_votes: 0,
                 cover: '/assets/covers/animal-farm.jpg',
                 status: BookModel.status.AVAILABLE,
             })
