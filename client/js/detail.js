@@ -49,6 +49,16 @@ async function addToFinishList() {
     renderBook(state.book);
 }
 
+
+/**
+ * Califica el libro
+ **/
+
+async function setRating() {
+    const rating = document.getElementById("rating");
+    await bookService.ratingBook(state.book.id, rating.value);
+}
+
 /**
  * Actualiza la UI
  **/
@@ -62,7 +72,7 @@ function renderBook(book) {
         refs.main
     );
 
-    if (book.status === 'AVAILABLE') {
+    if (book.status === 'AVAILABLE'){
         bookRefs.addToList.addEventListener('click', addToReadingList);
     }
 
@@ -75,8 +85,11 @@ function renderBook(book) {
     }
 
     if (book.status === 'FINISHED') {
-        bookRefs.removeFromFinish.addEventListener('click', null);
+        bookRefs.removeFromFinish.addEventListener('click', addToReadingList);
+        const rating = document.getElementById("rating");
+        rating.addEventListener("change", setRating);
     }
+
 }
 
 /**

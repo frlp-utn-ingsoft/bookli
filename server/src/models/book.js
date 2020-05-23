@@ -57,6 +57,16 @@ const Book = db.define(
         cover: {
             type: Sequelize.STRING,
         },
+        country: {
+            type: Sequelize.STRING,
+            allowNull: false,
+        },
+        rating: {
+            type: Sequelize.DECIMAL(3,2),
+        },
+        quantity_votes: {
+            type: Sequelize.INTEGER,
+        },
         status: {
             type: Sequelize.ENUM,
             allowNull: false,
@@ -179,6 +189,25 @@ const finishBook = (id) => {
     });
 };
 
+const ratingBook = (id, newRating) => {
+    return Book.findOne({ where: { id: id } }).then((book) => {
+        if (book != null) {
+            if (book.status !== FINISHED) {
+                return book;
+            }
+            if (newRating == null) {
+                return book;
+            }
+            newRating = parseInt(newRating);
+            const quantityVotes = book.quantity_votes + 1;
+            const dividendo = quantityVotes < 2 ? 1 : 2;
+            const rating = (book.rating + newRating) / dividendo;
+            return book.update({ rating: rating, quantity_votes: quantityVotes });
+        }
+        return null;
+    });
+};
+
 const BookModel = {
     Book: Book,
     status: status,
@@ -188,6 +217,7 @@ const BookModel = {
     start: startBook,
     makeAvailable: makeBookAvailable,
     finish: finishBook,
+    rating: ratingBook,
 };
 
 module.exports = BookModel;
