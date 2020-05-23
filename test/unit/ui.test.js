@@ -68,13 +68,14 @@ describe('Utils', () => {
     });
 
     test('assign', () => {
-        const book = { id: 1, title: 'El aleph' };
+        const book = { id: 1, title: 'El aleph', country: 'Argentina' };
         const result = utils.assign(book, { author: 'Borges' });
 
         expect(result).toStrictEqual({
             id: 1,
             title: 'El aleph',
             author: 'Borges',
+            country: 'Argentina',
         });
         expect(book).toStrictEqual(book);
     });
