@@ -54,7 +54,8 @@ async function addToFinishList() {
  * Califica el libro
  **/
 
- async function setRating(event) {
+async function setRating() {
+    const rating = document.getElementById("rating");
     await bookService.ratingBook(state.book.id, rating.value);
 }
 
@@ -85,7 +86,7 @@ function renderBook(book) {
 
     if (book.status === 'FINISHED') {
         bookRefs.removeFromFinish.addEventListener('click', addToReadingList);
-        var rating = document.getElementById("rating");
+        const rating = document.getElementById("rating");
         rating.addEventListener("change", setRating);
     }
 
