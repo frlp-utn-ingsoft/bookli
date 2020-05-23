@@ -22,12 +22,14 @@
                 <span class="highlight">{{ book.country }}</span>.
             </p>
             <p>
-                Es un libro perteneciente a los géneros
-                <span class="highlight"></span>.
+		Es un libro perteneciente a los géneros:
+                <span class="highlight">{{ book.genres | join(', ') }}</span>.
             </p>
         </div>
         {% endif %}
     </div>
+
+
 
     {% if detail %}
     <div class="book__actions">
@@ -46,16 +48,26 @@
         <button class="btn btn-danger" data-ref="removeFromFinish">
             Volver a leer
         </button>
+
+        <label for="Calificacion: " style="margin-left:150px">Calificacion :</label>
+        <select class="btn btn-primary" id="rating">
+            <option value =5>Muy bueno</option>
+            <option value =4>Bueno</option>
+            <option value =3>Regular</option>
+            <option value =2>Malo</option>
+            <option value =1>Muy Malo</option>
+            <option selected></option>
+        </select>
+
         {% endif %}
     </div>
     {% endif %}
-
 </div>
 
 
-{% if detail %} 
+{% if detail %}
 
-<button style="margin-top:10px" class="btn btn-primary" onclick="history.back()" padding-Top= > Atras </button> 
+<button style="margin-top:10px" class="btn btn-primary" onclick="history.back()"> Atras </button>
 
 {% endif %}
 
