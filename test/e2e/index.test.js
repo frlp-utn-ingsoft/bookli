@@ -78,6 +78,22 @@ describe('Home Test', () => {
                 'Hmmm... Parece que no tenemos el libro que buscas.\nProba con otra busqueda.'
             );
     });
+
+
+    test('Deberia volver a home al presionar Atras en un libro', browser => {
+        browser
+            .url(BASE_URL)
+            .waitForElementVisible('body')
+            .waitForElementVisible('.booklist .book')
+            .click('.search__input')
+            .keys('opera')
+            .click('.book')
+            .pause(300)
+            .click('.back');
+        browser.expect
+            .url().equal(BASE_URL+'/');
+    });
+
 });
 
 describe('Detail view', () => {
