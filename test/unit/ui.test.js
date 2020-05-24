@@ -2,6 +2,10 @@
  * @jest-environment jest-environment-jsdom-sixteen
  */
 
+
+
+import nunjucks from 'nunjucks';
+nunjucks.configure('client/views');
 import bookServices from '../../client/js/book-service.js';
 import * as utils from '../../client/js/utils.js';
 
@@ -95,6 +99,21 @@ describe('Utils', () => {
 
         expect(document.body.innerHTML).toBe('Hello');
     });
+
+
+
+
+test('Verifico que el placeholder del input de busqueda tiene el valor deseado', () =>{
+
+
+document.documentElement.innerHTML = nunjucks.render('home.html');
+
+expect(document.getElementById('idplace').placeholder).toBe('Buscar libro')
+
+});
+
+
+
 
     test('render with refs', () => {
         window.nunjucks = makeMookNunjucks();
