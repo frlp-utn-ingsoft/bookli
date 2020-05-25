@@ -159,4 +159,22 @@ describe('Detail view', () => {
             .element('.book__actions [data-ref=removeFromFinish]')
             .text.to.equal('Volver a leer');
     });
+    test('Verifico que al hacer hover sobre una tarjeta muestre opacidad', browser => {
+        browser
+            .url(BASE_URL)
+            .waitForElementVisible('body')
+            .waitForElementVisible('.booklist')
+            .moveToElement(
+              
+                'body > main > div > div.books-container > div > a:nth-child(1)',
+                1,
+                1,
+            )
+            .assert.cssProperty(
+                'body > main > div > div.books-container > div > a:nth-child(1)',
+                'opacity',
+                '0.9'
+            )
+
+    });
 });
