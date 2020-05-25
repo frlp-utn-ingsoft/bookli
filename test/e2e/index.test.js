@@ -86,7 +86,7 @@ describe('Home Test', () => {
             .waitForElementVisible('.booklist')
             .pause(400)
             .moveToElement('body > main > div > div.books-container > div > a:nth-child(1)', 10, 10, function() {
-            browser.assert.cssProperty('body > main > div > div.books-container > div > a:nth-child(1)', 'opacity', '0.5')
+            browser.assert.cssProperty('body > main > div > div.books-container > div > a:nth-child(1)', 'opacity', '0.4')
             })   
             
             
