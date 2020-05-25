@@ -42,6 +42,17 @@ describe('Home Test', () => {
             );
     });
 
+    test('Deberia mostrar que el input de busqueda tiene Placeholder', browser => {
+        browser
+        .url(BASE_URL)
+        .waitForElementVisible('body')
+        .waitForElementVisible('.search__input')
+        .assert.attributeContains(
+            '.search__input',
+            'placeholder',
+            'Buscar un libro')
+    });
+
     test('Deberia mostrar la lista de libros', browser => {
         browser
             .url(BASE_URL)
@@ -61,6 +72,7 @@ describe('Home Test', () => {
             .expect.elements('.booklist .book')
             .count.to.equal(1);
     });
+
 
     test('Deberia mostrar un mensaje cuando no se encuentra un libro', browser => {
         browser
