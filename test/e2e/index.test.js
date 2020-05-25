@@ -42,6 +42,17 @@ describe('Home Test', () => {
             );
     });
 
+    test('Deberia mostrar que el input de busqueda tiene Placeholder', browser => {
+        browser
+        .url(BASE_URL)
+        .waitForElementVisible('body')
+        .waitForElementVisible('.search__input')
+        .assert.attributeContains(
+            '.search__input',
+            'placeholder',
+            'Buscar un libro')
+    });
+
     test('Deberia mostrar la lista de libros', browser => {
         browser
             .url(BASE_URL)
@@ -61,6 +72,7 @@ describe('Home Test', () => {
             .expect.elements('.booklist .book')
             .count.to.equal(1);
     });
+
 
     test('Deberia mostrar un mensaje cuando no se encuentra un libro', browser => {
         browser
@@ -91,6 +103,21 @@ describe('Home Test', () => {
             
             
     });
+
+    test('Deberia volver a home al presionar Atras en un libro', browser => {
+        browser
+            .url(BASE_URL)
+            .waitForElementVisible('body')
+            .waitForElementVisible('.booklist .book')
+            .click('.search__input')
+            .keys('opera')
+            .click('.book')
+            .pause(300)
+            .click('.back');
+        browser.expect
+            .url().equal(BASE_URL+'/');
+    });
+
 });
 
 describe('Detail view', () => {
@@ -119,6 +146,20 @@ describe('Detail view', () => {
         browser.expect
             .element('.book__actions [data-ref=removeFromList]')
             .text.to.equal('Dejar de leer');
+    });
+
+    test('Deberia volver a la pantalla principal cuando presiono el logo', browser => {
+        browser
+            .url(BASE_URL)
+            .waitForElementVisible('body')
+            .waitForElementVisible('.booklist .book')
+            .click('.search__input')
+            .keys('opera')
+            .click('.book')
+            .pause(300)
+            .click('.brand__name');
+        browser.expect
+            .url().equal(BASE_URL+'/');
     });
 
     test('Deberia poder remover libro de la lista de lectura', browser => {

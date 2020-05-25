@@ -195,6 +195,7 @@ test('Obtener un libro por api', async () => {
     const bookReceived = await req.json();
 
     expect(book.id).toBe(bookReceived.id);
+    expect(book.genres).not.toBe([]);
 });
 
 test('Agregar un libro a la lista de lectura por api', async () => {
