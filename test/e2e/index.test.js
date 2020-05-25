@@ -184,4 +184,31 @@ describe('Detail view', () => {
             .element('.book__actions [data-ref=removeFromFinish]')
             .text.to.equal('Volver a leer');
     });
+
+    test('Deberia mostrar los botones dejar de leer y lo termine cuando se vuelve a leer un libro', browser => {
+        browser
+            .url(BASE_URL + '/detail/1')
+            .waitForElementVisible('body')
+            .waitForElementVisible('.book__actions [data-ref=addToList]');
+        browser
+            .click('.book__actions [data-ref=addToList]')
+            .pause(400)
+            .waitForElementVisible('.book__actions [data-ref=addToFinish]');
+        browser
+            .click('.book__actions [data-ref=addToFinish]')
+            .pause(400)
+            .waitForElementVisible('.book__actions [data-ref=removeFromFinish]');
+        browser
+            .click('.book__actions [data-ref=removeFromFinish]')
+            .pause(400)
+            .waitForElementVisible(
+                '.book__actions [data-ref=removeFromList]',
+                '.book__actions [data-ref=addToFinish]');
+        browser.expect
+            .element('.book__actions [data-ref=removeFromList]')
+            .text.to.equal('Dejar de leer');
+        browser.expect
+            .element('.book__actions [data-ref=addToFinish]')
+            .text.to.equal('Lo termine!');
+    })
 });
