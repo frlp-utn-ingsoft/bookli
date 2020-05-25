@@ -8,7 +8,6 @@ import nunjucks from 'nunjucks';
 nunjucks.configure('client/views');
 import bookServices from '../../client/js/book-service.js';
 import * as utils from '../../client/js/utils.js';
-var nunjucks = require('nunjucks');
 nunjucks.configure('client/views');
 
 beforeEach(() => {
