@@ -136,6 +136,20 @@ describe('Detail view', () => {
             .text.to.equal('Dejar de leer');
     });
 
+    test('Deberia volver a la pantalla principal cuando presiono el logo', browser => {
+        browser
+            .url(BASE_URL)
+            .waitForElementVisible('body')
+            .waitForElementVisible('.booklist .book')
+            .click('.search__input')
+            .keys('opera')
+            .click('.book')
+            .pause(300)
+            .click('.brand__name');
+        browser.expect
+            .url().equal(BASE_URL+'/');
+    });
+
     test('Deberia poder remover libro de la lista de lectura', browser => {
         browser
             .url(BASE_URL + '/detail/1')
