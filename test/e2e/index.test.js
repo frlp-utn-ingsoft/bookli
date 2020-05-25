@@ -78,6 +78,19 @@ describe('Home Test', () => {
                 'Hmmm... Parece que no tenemos el libro que buscas.\nProba con otra busqueda.'
             );
     });
+
+    test('Opacidad de la card al hacer Hover', browser => {
+        browser
+            .url(BASE_URL)
+            .waitForElementVisible('body')
+            .waitForElementVisible('.booklist')
+            .pause(400)
+            .moveToElement('body > main > div > div.books-container > div > a:nth-child(1)', 10, 10, function() {
+            browser.assert.cssProperty('body > main > div > div.books-container > div > a:nth-child(1)', 'opacity', '0.5')
+            })   
+            
+            
+    });
 });
 
 describe('Detail view', () => {
@@ -159,4 +172,5 @@ describe('Detail view', () => {
             .element('.book__actions [data-ref=removeFromFinish]')
             .text.to.equal('Volver a leer');
     });
+
 });
