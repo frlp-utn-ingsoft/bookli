@@ -117,7 +117,7 @@ describe('Detail view', () => {
             .keys('opera')
             .click('.book')
             .pause(300)
-            .click('.brand__logo');
+            .click('.brand__name');
         browser.expect
             .url().equal(BASE_URL+'/');
     });
