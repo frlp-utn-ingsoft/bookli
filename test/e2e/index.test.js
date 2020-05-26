@@ -116,8 +116,9 @@ describe('Detail view', () => {
             .click('.search__input')
             .keys('opera')
             .click('.book')
-            .pause(300)
-            .click('.brand__name');
+            .waitForElementVisible('.brand')
+            .click('.brand')
+            .waitForElementVisible('body');
         browser.expect
             .url().equal(BASE_URL+'/');
     });
