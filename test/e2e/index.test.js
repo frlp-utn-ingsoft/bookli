@@ -112,8 +112,9 @@ describe('Home Test', () => {
             .click('.search__input')
             .keys('opera')
             .click('.book')
-            .pause(300)
-            .click('.back');
+            .waitForElementVisible('.back')
+            .click('.back')
+            .waitForElementVisible('body');
         browser.expect
             .url().equal(BASE_URL+'/');
     });
