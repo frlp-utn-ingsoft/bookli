@@ -99,9 +99,9 @@ describe('Home Test', () => {
             .pause(400)
             .moveToElement('body > main > div > div.books-container > div > a:nth-child(1)', 10, 10, function() {
             browser.assert.cssProperty('body > main > div > div.books-container > div > a:nth-child(1)', 'opacity', '0.4')
-            })   
-            
-            
+            })
+
+
     });
 
     test('Deberia volver a home al presionar Atras en un libro', browser => {
@@ -113,6 +113,7 @@ describe('Home Test', () => {
             .keys('opera')
             .click('.book')
             .waitForElementVisible('.back')
+            .pause(1000)
             .click('.back')
             .waitForElementVisible('body');
         browser.expect
@@ -158,6 +159,7 @@ describe('Detail view', () => {
             .keys('opera')
             .click('.book')
             .waitForElementVisible('.brand')
+            .pause(1000)
             .click('.brand')
             .waitForElementVisible('body');
         browser.expect
@@ -229,14 +231,14 @@ describe('Detail view', () => {
             .pause(400)
             .waitForElementVisible('.book__actions [data-ref=removeFromList]');
 
-        
+
         browser.expect
             .element('.book__actions [data-ref=removeFromList]')
             .text.to.equal('Dejar de leer');
-                   
+
 
     });
-    
+
     test('Deberian aparecer el boton "Lo termine!" luego de apretar el boton "Volver a leer" ', browser => {
         browser
         .url(BASE_URL + '/detail/1')
