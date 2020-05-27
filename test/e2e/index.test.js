@@ -207,13 +207,53 @@ describe('Detail view', () => {
         browser
             .click('.book__actions [data-ref=addToFinish]')
             .pause(400)
-            .waitForElementVisible(
-                '.book__actions [data-ref=removeFromFinish]'
-            );
+            .waitForElementVisible('.book__actions [data-ref=removeFromFinish]');
 
         browser.expect
             .element('.book__actions [data-ref=removeFromFinish]')
             .text.to.equal('Volver a leer');
     });
 
+    test('Deberian aparecer el boton "Dejar de leer" luego de apretar el boton "Volver a leer" ', browser => {
+        browser
+            .url(BASE_URL + '/detail/1')
+            .waitForElementVisible('body')
+            .waitForElementVisible('.book__actions [data-ref=addToList]')
+            .click('.book__actions [data-ref=addToList]')
+            .pause(400)
+            .waitForElementVisible('.book__actions [data-ref=addToFinish]')
+            .click('.book__actions [data-ref=addToFinish]')
+            .pause(400)
+            .waitForElementVisible('.book__actions [data-ref=removeFromFinish]')
+            .click('.book__actions [data-ref=removeFromFinish]')
+            .pause(400)
+            .waitForElementVisible('.book__actions [data-ref=removeFromList]');
+
+        
+        browser.expect
+            .element('.book__actions [data-ref=removeFromList]')
+            .text.to.equal('Dejar de leer');
+                   
+
+    });
+    
+    test('Deberian aparecer el boton "Lo termine!" luego de apretar el boton "Volver a leer" ', browser => {
+        browser
+        .url(BASE_URL + '/detail/1')
+        .waitForElementVisible('body')
+        .waitForElementVisible('.book__actions [data-ref=addToList]')
+        .click('.book__actions [data-ref=addToList]')
+        .pause(400)
+        .waitForElementVisible('.book__actions [data-ref=addToFinish]')
+        .click('.book__actions [data-ref=addToFinish]')
+        .pause(400)
+        .waitForElementVisible('.book__actions [data-ref=removeFromFinish]')
+        .click('.book__actions [data-ref=removeFromFinish]')
+        .pause(400)
+        .waitForElementVisible('.book__actions [data-ref=removeFromList]');
+
+        browser.expect
+            .element('.book__actions [data-ref=addToFinish]')
+            .text.to.equal('Lo termine!');
+    });
 });
