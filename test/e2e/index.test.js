@@ -42,6 +42,17 @@ describe('Home Test', () => {
             );
     });
 
+    test('Deberia mostrar que el input de busqueda tiene Placeholder', browser => {
+        browser
+        .url(BASE_URL)
+        .waitForElementVisible('body')
+        .waitForElementVisible('.search__input')
+        .assert.attributeContains(
+            '.search__input',
+            'placeholder',
+            'Buscar un libro')
+    });
+
     test('Deberia mostrar la lista de libros', browser => {
         browser
             .url(BASE_URL)
@@ -62,6 +73,7 @@ describe('Home Test', () => {
             .count.to.equal(1);
     });
 
+
     test('Deberia mostrar un mensaje cuando no se encuentra un libro', browser => {
         browser
             .url(BASE_URL)
@@ -77,6 +89,33 @@ describe('Home Test', () => {
             .text.to.equal(
                 'Hmmm... Parece que no tenemos el libro que buscas.\nProba con otra busqueda.'
             );
+    });
+
+    test('Opacidad de la card al hacer Hover', browser => {
+        browser
+            .url(BASE_URL)
+            .waitForElementVisible('body')
+            .waitForElementVisible('.booklist')
+            .pause(400)
+            .moveToElement('body > main > div > div.books-container > div > a:nth-child(1)', 10, 10, function() {
+            browser.assert.cssProperty('body > main > div > div.books-container > div > a:nth-child(1)', 'opacity', '0.4')
+            })   
+            
+            
+    });
+
+    test('Deberia volver a home al presionar Atras en un libro', browser => {
+        browser
+            .url(BASE_URL)
+            .waitForElementVisible('body')
+            .waitForElementVisible('.booklist .book')
+            .click('.search__input')
+            .keys('opera')
+            .click('.book')
+            .pause(300)
+            .click('.back');
+        browser.expect
+            .url().equal(BASE_URL+'/');
     });
 });
 
@@ -106,6 +145,21 @@ describe('Detail view', () => {
         browser.expect
             .element('.book__actions [data-ref=removeFromList]')
             .text.to.equal('Dejar de leer');
+    });
+
+    test('Deberia volver a la pantalla principal cuando presiono el logo', browser => {
+        browser
+            .url(BASE_URL)
+           .waitForElementVisible('body')
+            .waitForElementVisible('.booklist .book')
+            .click('.search__input')
+            .keys('opera')
+            .click('.book')
+            .waitForElementVisible('.brand')
+            .click('.brand')
+            .waitForElementVisible('body');
+        browser.expect
+            .url().equal(BASE_URL+'/');
     });
 
     test('Deberia poder remover libro de la lista de lectura', browser => {
@@ -151,12 +205,53 @@ describe('Detail view', () => {
         browser
             .click('.book__actions [data-ref=addToFinish]')
             .pause(400)
-            .waitForElementVisible(
-                '.book__actions [data-ref=removeFromFinish]'
-            );
+            .waitForElementVisible('.book__actions [data-ref=removeFromFinish]');
 
         browser.expect
             .element('.book__actions [data-ref=removeFromFinish]')
             .text.to.equal('Volver a leer');
+    });
+
+    test('Deberian aparecer el boton "Dejar de leer" luego de apretar el boton "Volver a leer" ', browser => {
+        browser
+            .url(BASE_URL + '/detail/1')
+            .waitForElementVisible('body')
+            .waitForElementVisible('.book__actions [data-ref=addToList]')
+            .click('.book__actions [data-ref=addToList]')
+            .pause(400)
+            .waitForElementVisible('.book__actions [data-ref=addToFinish]')
+            .click('.book__actions [data-ref=addToFinish]')
+            .pause(400)
+            .waitForElementVisible('.book__actions [data-ref=removeFromFinish]')
+            .click('.book__actions [data-ref=removeFromFinish]')
+            .pause(400)
+            .waitForElementVisible('.book__actions [data-ref=removeFromList]');
+
+        
+        browser.expect
+            .element('.book__actions [data-ref=removeFromList]')
+            .text.to.equal('Dejar de leer');
+                   
+
+    });
+    
+    test('Deberian aparecer el boton "Lo termine!" luego de apretar el boton "Volver a leer" ', browser => {
+        browser
+        .url(BASE_URL + '/detail/1')
+        .waitForElementVisible('body')
+        .waitForElementVisible('.book__actions [data-ref=addToList]')
+        .click('.book__actions [data-ref=addToList]')
+        .pause(400)
+        .waitForElementVisible('.book__actions [data-ref=addToFinish]')
+        .click('.book__actions [data-ref=addToFinish]')
+        .pause(400)
+        .waitForElementVisible('.book__actions [data-ref=removeFromFinish]')
+        .click('.book__actions [data-ref=removeFromFinish]')
+        .pause(400)
+        .waitForElementVisible('.book__actions [data-ref=removeFromList]');
+
+        browser.expect
+            .element('.book__actions [data-ref=addToFinish]')
+            .text.to.equal('Lo termine!');
     });
 });
