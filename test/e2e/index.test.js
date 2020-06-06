@@ -258,4 +258,15 @@ describe('Detail view', () => {
             .element('.book__actions [data-ref=addToFinish]')
             .text.to.equal('Lo termine!');
     });
+
+    test('test if the country of the book is present in description" ', browser => {
+        browser
+        .url(BASE_URL + '/detail/1')
+        .waitForElementVisible('body')
+        .waitForElementVisible('.book__body')
+        .waitForElementVisible('.book__extra-info');
+        browser.expect
+            .element('.book__extra-info').text.to.contains('Argentina');
+
+    });
 });
