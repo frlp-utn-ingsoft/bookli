@@ -30,6 +30,17 @@ describe('Home Test', () => {
             .assert.titleContains('Bookli');
     });
 
+    test('Deberia tener el color de fuente especificado en el diseño', browser => {
+        browser
+            .url(BASE_URL)
+            .waitForElementVisible('body')
+            .assert.cssProperty(
+                '.filters-container > form > label:nth-child(2) > div',
+                'color',
+                'rgba(26, 32, 47, 1)'
+            );
+    });
+
     test('Deberia mostrar el logo de Bookli', browser => {
         browser
             .url(BASE_URL)
