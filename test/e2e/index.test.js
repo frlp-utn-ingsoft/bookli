@@ -41,6 +41,17 @@ describe('Home Test', () => {
             );
     });
 
+    test('Deberia tener el color de fondo en verde', browser => {
+        browser
+            .url(BASE_URL)
+            .waitForElementVisible('body')
+            .assert.cssProperty(
+                'body',
+                'background',
+                'rgb(0, 128, 0) none repeat scroll 0% 0% / auto padding-box border-box'
+            );
+    });
+
     test('Deberia mostrar el logo de Bookli', browser => {
         browser
             .url(BASE_URL)
