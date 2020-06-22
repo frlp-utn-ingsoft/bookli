@@ -20,6 +20,7 @@
     --space-8: 3rem;
 
     --white: #fff;
+    --green: green;
     --bg: #f4f5f7;
     --border: #cbd5e0;
     --primary: #35b2d3;
@@ -59,7 +60,7 @@ body {
     font-family: 'Roboto Condensed', sans-serif;
     font-size: 1rem;
     color: var(--gray-4);
-    background: green;
+    background: var(--green);
 }
 
 p {
