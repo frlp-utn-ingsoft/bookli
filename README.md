@@ -1,7 +1,15 @@
+
 # Bookli
 
-Aplicación utilizada en la cursada 2020 de Ingenieria de Software. UTN-FRLP
+## Grupo N°12
 
+## Integrantes:
+
+- Elias Petriella
+- Enzo Sebastian Avila
+
+`Aplicación utilizada en la cursada 2020 de Ingenieria de Software. UTN-FRLP`
+ 
 ## Dependencias
 
 -   node > v10
@@ -18,3 +26,4 @@ Aplicación utilizada en la cursada 2020 de Ingenieria de Software. UTN-FRLP
 ## Iniciar la app en modo producción
 
 `npm start`
+

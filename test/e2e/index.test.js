@@ -42,6 +42,18 @@ describe('Home Test', () => {
             );
     });
 
+        test('Deberia chequear que el link de redireccion del icono de la aplicacion sea el del home', browser => {
+        browser
+            .url(BASE_URL)
+            .waitForElementVisible('body')
+            .waitForElementVisible('.brand__logo')
+            .assert.attributeContains(
+                'body > header > div.brand > a:nth-child(1)',
+                'href',
+                'http://localhost:3000'
+            );
+    });
+
     test('Deberia mostrar la lista de libros', browser => {
         browser
             .url(BASE_URL)
@@ -78,6 +90,19 @@ describe('Home Test', () => {
                 'Hmmm... Parece que no tenemos el libro que buscas.\nProba con otra busqueda.'
             );
     });
+    
+    test('Deberia mostrar el placeholder del search', browser => {
+        browser
+            .url(BASE_URL)
+            .waitForElementVisible('body')
+            .waitForElementVisible('body > header > div.search')
+            .assert.attributeContains(
+                'body > header > div.search > input',
+                'placeholder',
+                'Buscar libro'
+            );
+    });
+
 });
 
 describe('Detail view', () => {
@@ -159,4 +184,31 @@ describe('Detail view', () => {
             .element('.book__actions [data-ref=removeFromFinish]')
             .text.to.equal('Volver a leer');
     });
+
+    test('Deberia mostrar los botones dejar de leer y lo termine cuando se vuelve a leer un libro', browser => {
+        browser
+            .url(BASE_URL + '/detail/1')
+            .waitForElementVisible('body')
+            .waitForElementVisible('.book__actions [data-ref=addToList]');
+        browser
+            .click('.book__actions [data-ref=addToList]')
+            .pause(400)
+            .waitForElementVisible('.book__actions [data-ref=addToFinish]');
+        browser
+            .click('.book__actions [data-ref=addToFinish]')
+            .pause(400)
+            .waitForElementVisible('.book__actions [data-ref=removeFromFinish]');
+        browser
+            .click('.book__actions [data-ref=removeFromFinish]')
+            .pause(400)
+            .waitForElementVisible(
+                '.book__actions [data-ref=removeFromList]',
+                '.book__actions [data-ref=addToFinish]');
+        browser.expect
+            .element('.book__actions [data-ref=removeFromList]')
+            .text.to.equal('Dejar de leer');
+        browser.expect
+            .element('.book__actions [data-ref=addToFinish]')
+            .text.to.equal('Lo termine!');
+    })
 });
