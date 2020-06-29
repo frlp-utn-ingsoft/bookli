@@ -142,6 +142,7 @@ p {
     box-shadow: var(--shadow);
     border: 1px solid var(--border);
     border-radius: var(--radius);
+    border-color: rgb(0, 0, 250);
 }
 
 .home {
