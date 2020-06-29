@@ -1,4 +1,10 @@
+.books-container .booklist .book-link:hover {
+    opacity: 0.9;
+ 
+}
+
 .book {
+
     display: grid;
     grid-template-rows: minmax(180px, auto) 1fr;
     grid-template-columns: 150px 1fr;

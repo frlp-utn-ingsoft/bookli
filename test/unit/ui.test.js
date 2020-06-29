@@ -2,8 +2,17 @@
  * @jest-environment jest-environment-jsdom-sixteen
  */
 
+
+
+import nunjucks from 'nunjucks';
+nunjucks.configure('client/views');
 import bookServices from '../../client/js/book-service.js';
 import * as utils from '../../client/js/utils.js';
+nunjucks.configure('client/views');
+
+beforeEach(() => {
+    document.documentElement.innerHTML = '';
+});
 
 function makeFakeJSONFetch({ success, result }) {
     return function () {
@@ -96,6 +105,21 @@ describe('Utils', () => {
         expect(document.body.innerHTML).toBe('Hello');
     });
 
+
+
+
+test('Verifico que el placeholder del input de busqueda tiene el valor deseado', () =>{
+
+
+document.documentElement.innerHTML = nunjucks.render('home.html');
+
+expect(document.getElementById('idplace').placeholder).toBe('Buscar libro')
+
+});
+
+
+
+
     test('render with refs', () => {
         window.nunjucks = makeMookNunjucks();
         const refs = utils.render(
@@ -106,5 +130,24 @@ describe('Utils', () => {
         const div = document.body.firstElementChild;
 
         expect(refs).toStrictEqual({ myDiv: div });
+    });
+
+    test('LogoLink', () => {
+        document.documentElement.innerHTML = nunjucks.render('../../client/views/_base.html');
+        var brandDiv = document.getElementsByClassName("brand")[0];
+
+        expect(brandDiv.children.length).toEqual(2);
+        
+        var aElement = brandDiv.children[0];
+        
+        expect(aElement.getAttribute("title")).toEqual("Bookli");
+        expect(aElement.getAttribute("href")).toEqual("/");
+        expect(aElement.children.length).toEqual(1);
+        
+        var imgElement = aElement.children[0];
+        
+        expect(imgElement.getAttribute("class")).toEqual("brand__logo");
+        expect(imgElement.getAttribute("src")).toEqual("/assets/logo.svg");
+        expect(imgElement.getAttribute("alt")).toEqual("bookli logo");
     });
 });
