@@ -30,6 +30,31 @@ describe('Home Test', () => {
             .assert.titleContains('Bookli');
     });
 
+
+
+    test('Verifico que el color de los bordes de las cards es verde', browser => {
+        browser
+            .url(BASE_URL)
+            .waitForElementVisible('body')
+            .waitForElementVisible('.booklist')
+           
+            .assert.cssProperty(
+                'body > main > div > div.books-container > div > a:nth-child(1) > div',
+                'border-color',
+                'rgb(28, 255, 0)'
+            )
+            .assert.cssProperty(
+                'body > main > div > div.filters-container > form',
+                'border-color',
+                'rgb(28, 255, 0)'
+            )
+
+    });
+
+
+
+
+
     test('Deberia mostrar el logo de Bookli', browser => {
         browser
             .url(BASE_URL)
