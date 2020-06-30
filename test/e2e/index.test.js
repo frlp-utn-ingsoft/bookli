@@ -54,6 +54,17 @@ describe('Home Test', () => {
             );
     });
 
+                test('Deberia chequear que el color de los bordes de las cards es azul', browser => {
+        browser
+            .url(BASE_URL)
+            .waitForElementVisible('body')
+            .assert.cssProperty(
+                'body > main > div > div.books-container > div > a:nth-child(1) > div',
+                'border-color',
+                'rgb(0, 0, 250)'
+            );
+    });
+
     test('Deberia mostrar la lista de libros', browser => {
         browser
             .url(BASE_URL)
