@@ -32,7 +32,7 @@ describe('Home Test', () => {
 
 
 
-    test('Verifico que el color de los bordes de las cards es verde', browser => {
+    test('Verifico que el color de los bordes de las cards es gris', browser => {
         browser
             .url(BASE_URL)
             .waitForElementVisible('body')
@@ -41,12 +41,12 @@ describe('Home Test', () => {
             .assert.cssProperty(
                 'body > main > div > div.books-container > div > a:nth-child(1) > div',
                 'border-color',
-                'rgb(28, 255, 0)'
+                'rgb(187, 190, 195)'
             )
             .assert.cssProperty(
                 'body > main > div > div.filters-container > form',
                 'border-color',
-                'rgb(28, 255, 0)'
+                'rgb(187, 190, 195)'
             )
 
     });
