@@ -175,6 +175,24 @@ describe('Detail view', () => {
                 'opacity',
                 '0.9'
             )
-
+           
+    });
+    test('Verifico que al hacer hover sobre una tarjeta de libro se traslade arriba', browser => {
+        browser
+            .url(BASE_URL)
+            .waitForElementVisible('body')
+            .waitForElementVisible('.booklist')
+            .moveToElement(
+              
+                'body > main > div > div.books-container > div > a:nth-child(1)',
+                1,
+                1,
+            )
+            
+            .assert.cssProperty(
+                'body > main > div > div.books-container > div > a:nth-child(1)',
+                'transform',
+                'matrix(1, 0, 0, 1, 0, -15)'
+            )
     });
 });
