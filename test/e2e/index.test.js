@@ -114,6 +114,17 @@ describe('Home Test', () => {
             );
     });
 
+    test('Deberia chequear el link del boton Comprar redireccione a la categoria libros de la tienda de amazon', browser => {
+        browser
+            .url(BASE_URL)
+            .waitForElementVisible('body')
+            .waitForElementVisible('main > div > div.filters-container')
+            .assert.attributeContains(
+                'body > main > div > div.filters-container > form:nth-child(2)',
+                'action',
+                'https://amazon.com/books'
+            )
+    })
 });
 
 describe('Detail view', () => {
