@@ -15,6 +15,7 @@ test('Crear libro', async () => {
         genres: ['Cuentos', 'Fantástico'],
         authors: ['Jorge Luis Borges'],
         cover: '/assets/el-aleph.jpg',
+        country: 'Argentina',
     };
 
     // Creamos el libro
@@ -23,6 +24,7 @@ test('Crear libro', async () => {
     expect(book.title).toBe(bookData.title);
     expect(book.description).toBe(bookData.description);
     expect(book.year).toBe(bookData.year);
+    expect(book.country).toBe(bookData.country);
 });
 
 test('Crear libro sin título', async () => {
@@ -35,6 +37,7 @@ test('Crear libro sin título', async () => {
         genres: ['Educación', 'Tecnología', 'Programación'],
         authors: ['David Thomas', 'Andrew Hunt'],
         cover: '/assets/pragmatic-programmer.jpg',
+        country: 'Estados Unidos',
     };
 
     try {
@@ -55,6 +58,7 @@ test('Obtener un libro', async () => {
         genres: ['Educación', 'Tecnología', 'Programación'],
         authors: ['David Thomas', 'Andrew Hunt'],
         cover: '/assets/pragmatic-programmer.jpg',
+        country: 'Estados Unidos',
     };
 
     // Creamos el libro
@@ -78,6 +82,7 @@ test('Obtener un libro inexistente', async () => {
         genres: ['Educación', 'Tecnología', 'Programación'],
         authors: ['David Thomas', 'Andrew Hunt'],
         cover: '/assets/pragmatic-programmer.jpg',
+        country: 'Estados Unidos',
     };
 
     // Creamos el libro
@@ -100,6 +105,7 @@ test('Obtener todos los libros', async () => {
         genres: ['Educación', 'Tecnología', 'Programación'],
         authors: ['David Thomas', 'Andrew Hunt'],
         cover: '/assets/pragmatic-programmer.jpg',
+        country: 'Estados Unidos',
     };
 
     const secondBookData = {
@@ -112,6 +118,7 @@ test('Obtener todos los libros', async () => {
         genres: ['Cuentos', 'Fantástico'],
         authors: ['Jorge Luis Borges'],
         cover: '/assets/el-aleph.jpg',
+        country: 'Argentina',
     };
 
     // Creamos los libros
@@ -137,6 +144,7 @@ test('Buscar libros', async () => {
         genres: ['Educación', 'Tecnología', 'Programación'],
         authors: ['David Thomas', 'Andrew Hunt'],
         cover: '/assets/pragmatic-programmer.jpg',
+        country: 'Estados Unidos',
     };
 
     const secondBookData = {
@@ -149,6 +157,7 @@ test('Buscar libros', async () => {
         genres: ['Cuentos', 'Fantástico'],
         authors: ['Jorge Luis Borges'],
         cover: '/assets/el-aleph.jpg',
+        country: 'Argentina',
     };
 
     // Creamos los libros
@@ -173,6 +182,7 @@ test('Buscar libros sin resultado', async () => {
         genres: ['Educación', 'Tecnología', 'Programación'],
         authors: ['David Thomas', 'Andrew Hunt'],
         cover: '/assets/pragmatic-programmer.jpg',
+        country: 'Estados Unidos',
     };
 
     const secondBookData = {
@@ -185,6 +195,8 @@ test('Buscar libros sin resultado', async () => {
         genres: ['Cuentos', 'Fantástico'],
         authors: ['Jorge Luis Borges'],
         cover: '/assets/el-aleph.jpg',
+        country: 'Argentina',
+
     };
 
     // Creamos los libros
@@ -208,6 +220,7 @@ test('Buscar libros con varios resultados', async () => {
         genres: ['Educación', 'Tecnología', 'Programación'],
         authors: ['David Thomas', 'Andrew Hunt'],
         cover: '/assets/pragmatic-programmer.jpg',
+        country: 'Estados Unidos',
     };
 
     const secondBookData = {
@@ -220,6 +233,7 @@ test('Buscar libros con varios resultados', async () => {
         genres: ['Cuentos', 'Fantástico'],
         authors: ['Jorge Luis Borges'],
         cover: '/assets/el-aleph.jpg',
+        country: 'Argentina',
     };
 
     // Creamos los libros
@@ -243,6 +257,7 @@ test('Agregar un libro a la lista de lectura', async () => {
         genres: ['Educación', 'Tecnología', 'Programación'],
         authors: ['David Thomas', 'Andrew Hunt'],
         cover: '/assets/pragmatic-programmer.jpg',
+        country: 'Estados Unidos',
     };
 
     // Creamos el libro
@@ -271,6 +286,7 @@ test('Agregar un libro inexistente a la lista de lectura', async () => {
         genres: ['Educación', 'Tecnología', 'Programación'],
         authors: ['David Thomas', 'Andrew Hunt'],
         cover: '/assets/pragmatic-programmer.jpg',
+        country: 'Estados Unidos',
     };
 
     // Creamos el libro
@@ -296,6 +312,7 @@ test('Obtener libros de la lista de lectura', async () => {
         genres: ['Educación', 'Tecnología', 'Programación'],
         authors: ['David Thomas', 'Andrew Hunt'],
         cover: '/assets/pragmatic-programmer.jpg',
+        country: 'Estados Unidos',
     };
 
     // Creamos el libro
@@ -325,6 +342,7 @@ test('Obtener lista de lectura vacía', async () => {
         genres: ['Educación', 'Tecnología', 'Programación'],
         authors: ['David Thomas', 'Andrew Hunt'],
         cover: '/assets/pragmatic-programmer.jpg',
+        country: 'Estados Unidos',
     };
 
     // Creamos el libro
@@ -348,6 +366,7 @@ test('Poner disponible un libro nuevamente', async () => {
         genres: ['Educación', 'Tecnología', 'Programación'],
         authors: ['David Thomas', 'Andrew Hunt'],
         cover: '/assets/pragmatic-programmer.jpg',
+        country: 'Estados Unidos',
         status: BookModels.status.READING,
     };
 
@@ -374,6 +393,7 @@ test('Poner disponible un libro en estado terminado', async () => {
         genres: ['Educación', 'Tecnología', 'Programación'],
         authors: ['David Thomas', 'Andrew Hunt'],
         cover: '/assets/pragmatic-programmer.jpg',
+        country: 'Estados Unidos',
         status: BookModels.status.FINISHED,
     };
 
@@ -398,6 +418,7 @@ test('Finalizar un libro', async () => {
         genres: ['Educación', 'Tecnología', 'Programación'],
         authors: ['David Thomas', 'Andrew Hunt'],
         cover: '/assets/pragmatic-programmer.jpg',
+        country: 'Estados Unidos',
         status: BookModels.status.READING,
     };
 
@@ -424,6 +445,7 @@ test('Finalizar un libro en estado disponible', async () => {
         genres: ['Educación', 'Tecnología', 'Programación'],
         authors: ['David Thomas', 'Andrew Hunt'],
         cover: '/assets/pragmatic-programmer.jpg',
+        country: 'Estados Unidos',
     };
 
     // Creamos el libro
