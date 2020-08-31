@@ -60,7 +60,7 @@ body {
     font-family: 'Roboto Condensed', sans-serif;
     font-size: 1rem;
     color: var(--gray-4);
-    background: var(--green);
+    background: var(--bg);
 }
 
 p {
